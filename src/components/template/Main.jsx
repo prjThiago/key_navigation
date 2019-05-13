@@ -2,11 +2,9 @@ import React from 'react';
 
 import './Main.css';
 
-import Header from './Header';
-
 export default props => (
-  <React.Fragment>
-    <Header />
-    <main className="content">Conteúdo</main>
-  </React.Fragment>
+  <main className="content">
+    <button className="btn-watch">Assista</button>
+    <button className="btn-more">Veja Mais</button>
+  </main>
 );
