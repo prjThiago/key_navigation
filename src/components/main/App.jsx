@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ArrowKeysReact from 'arrow-keys-react';
+import ReactDOM from 'react-dom';
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -13,7 +14,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      content: 'Use arrow key',
       nav: false,
       main: true,
       footer: false,
@@ -138,14 +138,17 @@ class App extends Component {
     });
   }
 
+  componentDidMount() {
+    ReactDOM.findDOMNode(this.refs.main).focus();
+  }
+
   render() {
     const { state } = this;
 
     return (
-      <div className="app" {...ArrowKeysReact.events} tabIndex="1">
-        <div>{state.content}</div>
+      <div className="app" {...ArrowKeysReact.events} tabIndex="1" ref="main">
         <Nav focused={state.nav} index={state.index} />
-        <Main focused={state.main} index={state.index} />
+        <Main focused={state.main} index={state.index} railindex={state.footer} />
         <Footer focused={state.footer} index={state.index} />
       </div>
     );

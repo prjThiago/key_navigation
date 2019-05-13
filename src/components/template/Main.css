@@ -1,5 +1,7 @@
 button {
   margin: 0 5px 0 5px;
+  top: 350px;
+  position: relative;
 }
 
 button.btn-dark {
@@ -8,4 +10,21 @@ button.btn-dark {
 
 button.btn-light {
   border: solid 2px --bg-dark;
+}
+
+.img-default {
+  background-image: url("../../assets/images/img-default.jpg");
+}
+
+.img-0 {
+  background-image: url("../../assets/images/img0.jpg");
+}
+.img-1 {
+  background-image: url("../../assets/images/img1.jpg");
+}
+.img-2 {
+  background-image: url("../../assets/images/img2.jpg");
+}
+.img-3 {
+  background-image: url("../../assets/images/img3.jpg");
 }
