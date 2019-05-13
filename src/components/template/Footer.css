@@ -5,3 +5,16 @@
 .footer ul li.focused {
   border: solid 2px white;
 }
+
+.footer ul {
+  display: block;
+  list-style: none;
+}
+.footer ul li {
+  display: inline;
+  padding: 10px;
+}
+
+.footer ul li.focused {
+  border: solid 2px white;
+}
