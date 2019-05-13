@@ -22,24 +22,118 @@ class App extends Component {
 
     ArrowKeysReact.config({
       left: () => {
-        this.setState({
-          content: 'left key detected.',
-        });
+        let { state } = this;
+        const { index } = state;
+        const navDefault = {
+          nav: true,
+          main: false,
+          footer: false,
+          index: 0,
+        };
+
+        if (index === 0) {
+          state = navDefault;
+        } else if (state.main) {
+          state = {
+            nav: false,
+            main: true,
+            footer: false,
+            index: 0,
+          };
+        } else if (state.footer) {
+          state = {
+            nav: false,
+            main: false,
+            footer: true,
+            index: index - 1,
+          };
+        }
+
+        this.setState(state);
       },
       right: () => {
-        this.setState({
-          content: 'right key detected.',
-        });
+        let { state } = this;
+        const { index } = state;
+
+        if (state.nav) {
+          state = {
+            nav: false,
+            main: true,
+            footer: false,
+            index: 0,
+          };
+        } else if (state.main) {
+          state = {
+            nav: false,
+            main: true,
+            footer: false,
+            index: 1,
+          };
+        } else if (state.footer) {
+          if (index < 3) {
+            state = {
+              nav: false,
+              main: false,
+              footer: true,
+              index: index + 1,
+            };
+          } else {
+            state = {
+              nav: false,
+              main: false,
+              footer: true,
+              index: 3,
+            };
+          }
+        }
+
+        this.setState(state);
       },
       up: () => {
-        this.setState({
-          content: 'up key detected.',
-        });
+        let { state } = this;
+        const { index } = state;
+        const mainDefault = {
+          nav: false,
+          main: true,
+          footer: false,
+          index: 0,
+        };
+
+        if (state.nav) {
+          state = {
+            nav: true,
+            main: false,
+            footer: false,
+            index: index > 0 ? index - 1 : index,
+          };
+        } else if (state.footer) {
+          state = mainDefault;
+        }
+
+        this.setState(state);
       },
       down: () => {
-        this.setState({
-          content: 'down key detected.',
-        });
+        let { state } = this;
+        const { index } = state;
+        const footerDefault = {
+          nav: false,
+          main: false,
+          footer: true,
+          index: 0,
+        };
+
+        if (state.nav) {
+          state = {
+            nav: true,
+            main: false,
+            footer: false,
+            index: index < 4 ? index + 1 : index,
+          };
+        } else if (state.main) {
+          state = footerDefault;
+        }
+
+        this.setState(state);
       },
     });
   }
@@ -50,9 +144,9 @@ class App extends Component {
     return (
       <div className="app" {...ArrowKeysReact.events} tabIndex="1">
         <div>{state.content}</div>
-        <Nav selected={state.nav} index={state.index} />
-        <Main selected={state.main} index={state.index} />
-        <Footer selected={state.footer} index={state.index} />
+        <Nav focused={state.nav} index={state.index} />
+        <Main focused={state.main} index={state.index} />
+        <Footer focused={state.footer} index={state.index} />
       </div>
     );
   }

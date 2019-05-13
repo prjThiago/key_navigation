@@ -1,0 +1,11 @@
+button {
+  margin: 0 5px 0 5px;
+}
+
+button.btn-dark {
+  border: solid 2px aliceblue;
+}
+
+button.btn-light {
+  border: solid 2px --bg-dark;
+}

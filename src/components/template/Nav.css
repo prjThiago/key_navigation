@@ -4,3 +4,8 @@
   justify-content: flex-start;
   align-items: center;
 }
+
+.menu-area ul li.focused {
+  background-color: white;
+  color: --bg-dark;
+}

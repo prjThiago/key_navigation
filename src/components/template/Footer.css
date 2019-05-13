@@ -1,0 +1,7 @@
+.footer ul li {
+  color: white;
+}
+
+.footer ul li.focused {
+  border: solid 2px white;
+}
